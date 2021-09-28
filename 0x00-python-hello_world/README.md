@@ -1,0 +1,1 @@
+# This directory is to learn on how to start Python.
