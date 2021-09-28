@@ -1,1 +1,1 @@
-# This directory is to learn on how to start Python.
+# This directory is to start to learn Python.
