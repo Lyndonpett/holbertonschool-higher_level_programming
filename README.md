@@ -1,1 +1,1 @@
-# holbertonschool-higher_level_programming
+# This repo is to learn Python as a higher-level of programming.
