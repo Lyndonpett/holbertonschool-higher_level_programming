@@ -18,6 +18,10 @@ int is_palindrome(listint_t **head)
 	{
 		return (1);
 	}
+	if ((*head)->n == '\0')
+	{
+		return (1);
+	}
 
 	p1 = p2 = *head;
 	while (p2)
