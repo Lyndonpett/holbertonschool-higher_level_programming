@@ -1,0 +1,1 @@
+# This directory is to get used to using data structures in Python.
