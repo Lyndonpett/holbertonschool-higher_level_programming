@@ -10,41 +10,29 @@
 
 int is_palindrome(listint_t **head)
 {
-	listint_t *p1, *p2;
-	listint_t *mid = NULL;
-	int result = 1;
+	listint_t *p1 = *head;
+	listint_t *p2 = *head;
 
-	if (head == NULL)
-	{
+	if (*head == NULL)
 		return (1);
-	}
-	if ((*head)->next == NULL)
+
+	while (p2 && p2->next && p2->next->next)
 	{
-		return (1);
+		p1 = p1->next;
+		p2 = p2->next->next;
 	}
 
-	p1 = p2 = *head;
-	while (p2)
-	{
-		p2 = p2->next;
-		if (p2)
-			p2 = p2->next;
-		if (p2)
-			p1 = p1->next;
-	}
-	mid = p1;
-	reverseList(&(mid->next));
-	p1 = *head;
-	p2 = mid->next;
-	while (result == 1 && p2)
+	p1 = reverseList(&p1);
+	p2 = *head;
+	while (p1 && p2)
 	{
 		if (p1->n != p2->n)
-			result = 0;
+			return (0);
 		p1 = p1->next;
 		p2 = p2->next;
 	}
-	reverseList(&(mid->next));
-	return (result);
+
+	return (1);
 }
 
 /**
@@ -52,18 +40,21 @@ int is_palindrome(listint_t **head)
  *
  * @head: the list.
  *
+ * Return: head reversed
  */
-
-void reverseList(listint_t **head)
+listint_t *reverseList(listint_t **head)
 {
-	listint_t *prev = NULL, *ptr = *head, *temp;
+	listint_t *prev = NULL;
+	listint_t *next = NULL;
 
-	while (ptr)
+	while (*head)
 	{
-		temp = ptr->next;
-		ptr->next = prev;
-		prev = ptr;
-		ptr = temp;
+		next = (*head)->next;
+		(*head)->next = prev;
+		prev = *head;
+		*head = next;
 	}
+
 	*head = prev;
+	return (*head);
 }
