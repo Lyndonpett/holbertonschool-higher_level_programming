@@ -1,0 +1,47 @@
+Import ''add_integer'' from ''0-add_integer'' module:
+
+	>>> add_integer = __import__('0-add_integer').add_integer
+
+Tests:
+
+ADDING POSITIVE INTS
+	>>> add_integer(1, 2)
+	3
+
+ADDING ONE POSITIVE WITH ONE NEGATIVE INT
+	>>> add_integer(100, -2)
+	98
+
+ADDING WITH A JUST PASSED
+	>>> add_integer(2)
+	100
+
+ADDING WITH ONE FLOAT AND ONE NEGATIVE INT
+	>>> add_integer(100.3, -2)
+	98
+
+ADDING TWO NEGATIVE INTS
+	>>> add_integer(-3, -2)
+	-5
+
+ADDING TWO POSITIVE FLOATS
+	>>> add_integer(2.38, 2.98)
+	4
+
+ADDING WITH NOTHING PASSED
+	>>> add_integer(None)
+	Traceback (most recent call last):
+	...
+	TypeError: a must be an integer
+
+ADDING WITH A CHAR PASSED TO FIRST INT
+	>>> add_integer("a", 2)
+	Traceback (most recent call last):
+	...
+	TypeError: a must be an integer
+
+ADDING WITH A CHAR PASSED TO SECOND INT
+	>>> add_integer(5, "8")
+	Traceback (most recent call last):
+	...
+	TypeError: b must be an integer
