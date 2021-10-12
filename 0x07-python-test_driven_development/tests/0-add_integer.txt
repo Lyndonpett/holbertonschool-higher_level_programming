@@ -45,3 +45,15 @@ ADDING WITH A CHAR PASSED TO SECOND INT
 	Traceback (most recent call last):
 	...
 	TypeError: b must be an integer
+
+PASSING NaN
+	>>> add_integer(float("NaN"))
+	Traceback (most recent call last):
+	...
+	ValueError: cannot convert float NaN to integer
+
+PASSING INF
+	>>> add_integer(float('inf'))
+	Traceback (most recent call last):
+	...
+	OverflowError: cannot convert float infinity to integer
