@@ -41,3 +41,8 @@ PASSING NONE TO ONE STRING SPOT
 	Traceback (most recent call last):
 	...
 	TypeError: first_name must be a string
+
+PASSING NON-STRING TO LAST_NAME
+    >>> say_my_name("dog", True)
+    Traceback (most recent call last):
+    TypeError: last_name must be a string
