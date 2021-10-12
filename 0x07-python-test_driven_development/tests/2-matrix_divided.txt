@@ -49,3 +49,21 @@ NO AGRUMENT TO DIV
 	Traceback (most recent call last):
 	...
 	TypeError: div must be a number
+
+PASSING INF
+	>>> matrix_divided([[[1, 2, 3]], [4, 8, 7, 9]], float('inf'))
+	Traceback (most recent call last):
+	...
+	TypeError: matrix must be a matrix (list of lists) of integers/floats
+
+PASSING NO ARGUMENTS
+	>>> matrix_divided()
+	Traceback (most recent call last):
+	...
+	TypeError: matrix_divided() missing 2 required positional arguments: 'matrix' and 'div'
+
+PASSING ONE AGRUMENT
+	>>> matrix_divided([[1, 2, 3]])
+	Traceback (most recent call last):
+	...
+	TypeError: matrix_divided() missing 1 required positional argument: 'div'
