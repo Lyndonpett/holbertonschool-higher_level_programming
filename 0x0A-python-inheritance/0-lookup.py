@@ -5,13 +5,6 @@
 
 
 def lookup(obj):
-    """Returns list object
-
-    Args:
-        obj(type): Object
-
-    Returns:
-        Type: dir(obj)
-    """
+    """Returns list object"""
 
     return dir(obj)
