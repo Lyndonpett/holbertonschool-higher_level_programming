@@ -48,3 +48,9 @@ class Base:
 
         with open(filename, 'w') as f:
             f.write(cls.to_json_string(newList))
+
+    @staticmethod
+    def from_json_string(json_string):
+        if json_string is None or 0:
+            return []
+        return json.loads(json_string)
