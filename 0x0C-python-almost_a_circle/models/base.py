@@ -31,7 +31,7 @@ class Base:
 
     @staticmethod
     def to_json_string(list_dictionaries):
-        if list_dictionaries is None or 0:
+        if list_dictionaries is None or list_dictionaries == []:
             return "[]"
         return json.dumps(list_dictionaries)
 
@@ -65,3 +65,18 @@ class Base:
 
         dummy.update(**dictionary)
         return dummy
+
+    @classmethod
+    def load_from_file(cls):
+        filename = cls.__name__ + '.json'
+        newList = []
+
+        try:
+            with open(filename, 'r') as f:
+                newList = cls.from_json_string(f.read())
+                for i, j in enumerate(newList):
+                    newList[i] = cls.create(**newList[i])
+            return newList
+
+        except:
+            return []
