@@ -20,64 +20,64 @@ class Rectangle(Base):
         self.xyValidator("y", y)
         self.__y = y
 
-    """Getter for width"""
+    # Getter for width
 
     @property
     def width(self):
         return self.__width
 
-    """Setter for width w/ validator"""
+    # Setter for width w/ validator
 
     @width.setter
     def width(self, value):
         self.integerValidator("width", value)
         self.__width = value
 
-    """Getter for height"""
+    # Getter for height
 
     @property
     def height(self):
         return self.__height
 
-    """Setter for height w/ validator"""
+    # Setter for height w/ validator
 
     @height.setter
     def height(self, value):
         self.integerValidator("height", value)
         self.__height = value
 
-    """Getter for x"""
+    # Getter for x"""
 
     @property
     def x(self):
         return self.__x
 
-    """Setter for x w/ validator"""
+    # Setter for x w/ validator
 
     @x.setter
     def x(self, value):
         self.xyValidator("x", value)
         self.__x = value
 
-    """Getter for y"""
+    # Getter for y"""
 
     @property
     def y(self):
         return self.__y
 
-    """Setter for y w/ validator"""
+    # Setter for y w/ validator
 
     @y.setter
     def y(self, value):
         self.xyValidator("y", value)
         self.__y = value
 
-    """Gets and returns area"""
+    # Gets and returns area
 
     def area(self):
         return self.__height * self.__width
 
-    """Displays the rectangle"""
+    # Displays the rectangle
 
     def display(self):
         for row in range(self.__y):
@@ -86,13 +86,13 @@ class Rectangle(Base):
             print(" "*self.__x, end="")
             print("#"*self.__width)
 
-    """Overrides string rep to what we want"""
+    # Overrides string rep to what we want
 
     def __str__(self):
         return "[Rectangle] ({}) {}/{} - {}/{}".format(
             self.id, self.x, self.y, self.width, self.height)
 
-    """Assigns an argument to each attribute"""
+    # Assigns an argument to each attribute
 
     def update(self, *args, **kwargs):
         Attributes = ['id', 'width', 'height', 'x', 'y']
@@ -104,7 +104,7 @@ class Rectangle(Base):
             for item in kwargs:
                 setattr(self, item, kwargs[item])
 
-    """Dictionary rep of the class"""
+    # Dictionary rep of the class
 
     def to_dictionary(self):
         Dic = {'id': self.id, 'width': self.width,
