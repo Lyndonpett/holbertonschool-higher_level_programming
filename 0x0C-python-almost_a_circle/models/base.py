@@ -2,6 +2,9 @@
 """This modules defines class Base"""
 
 
+import json
+
+
 class Base:
     """Defining class Base"""
 
@@ -25,3 +28,9 @@ class Base:
             raise TypeError("{} must be an integer".format(name))
         if value < 0:
             raise ValueError("{} must be >= 0".format(name))
+
+    @staticmethod
+    def to_json_string(list_dictionaries):
+        if list_dictionaries is None or 0:
+            return "[]"
+        return json.dumps(list_dictionaries)
