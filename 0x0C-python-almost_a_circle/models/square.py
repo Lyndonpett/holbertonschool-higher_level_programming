@@ -24,3 +24,13 @@ class Square(Rectangle):
         self.integerValidator("width", value)
         self.width = value
         self.height = value
+
+    def update(self, *args, **kwargs):
+        Attributes = ['id', 'size', 'x', 'y']
+        if args and len(args) != 0:
+            for key in range(len(args)):
+                setattr(self, Attributes[key], args[key])
+
+        else:
+            for item in kwargs:
+                setattr(self, item, kwargs[item])
