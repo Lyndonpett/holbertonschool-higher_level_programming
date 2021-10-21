@@ -12,6 +12,7 @@ class TestRectangle(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
+        """Setting up class"""
         cls.r1 = Rectangle(10, 5)
         cls.r2 = Rectangle(69, 420, 350, 15)
         cls.r3 = Rectangle(6, 12, 18, 24, 30)
@@ -19,12 +20,14 @@ class TestRectangle(unittest.TestCase):
 
     @classmethod
     def tearDownClass(cls):
+        """Tearing down class"""
         del cls.r1
         del cls.r2
         del cls.r3
         del cls.r4
 
     def testInstantation(self):
+        """Testing init values"""
         self.assertEqual(self.r1.id, 3)
         self.assertEqual(self.r1.width, 10)
         self.assertEqual(self.r1.height, 5)
@@ -50,7 +53,9 @@ class TestRectangle(unittest.TestCase):
         self.assertEqual(self.r4.y, 0)
 
     def testInitErrors(self):
+        """The init errors tested"""
         with self.assertRaises(TypeError):
+            """Testing typeerrors"""
             r5 = Rectangle()
             r5 = Rectangle("String")
             r6 = Rectangle(5)
@@ -60,6 +65,7 @@ class TestRectangle(unittest.TestCase):
             r6 = Rectangle(5, 6, 7, 8, "String")
 
         with self.assertRaises(ValueError):
+            """Testing valueerrors"""
             r7 = Rectangle(0, 1, id=0)
             r7 = Rectangle(0, 0, id=0)
             r7 = Rectangle(1, 0, id=0)
@@ -69,6 +75,7 @@ class TestRectangle(unittest.TestCase):
             r7 = Rectangle(1, 1, 1, -1, id=0)
 
     def testSetter(self):
+        """Testing setter"""
         R = Rectangle(1, 1)
         R.id = 69
         self.assertEqual(R.id, 69)
@@ -82,6 +89,7 @@ class TestRectangle(unittest.TestCase):
         self.assertEqual(R.y, 15)
 
     def TestSetterErrors(self):
+        """Testing setter errors"""
         self.assertRaises(TypeError, self.R.__init__, ["5", "6"])
         self.assertRaises(TypeError, self.R.__init__, [[5], [6]])
         self.assertRaises(TypeError, self.R.__init__, [5.69420, 6.35069])
@@ -95,6 +103,7 @@ class TestRectangle(unittest.TestCase):
         self.assertRaises(ValueError, self.R.y, -1)
 
     def testArea(self):
+        """Testing area"""
         R = Rectangle(5, 10, id=0)
         self.assertEqual(R.area(), 50)
         R.width = 3
@@ -103,6 +112,7 @@ class TestRectangle(unittest.TestCase):
         self.assertEqual(R.area(), 15)
 
     def testUpdateArgs(self):
+        """Testing update with args"""
         R = Rectangle(2, 2, id=0)
         self.assertEqual(R.id, 0)
         self.assertEqual(R.width, 2)
@@ -146,6 +156,7 @@ class TestRectangle(unittest.TestCase):
         self.assertEqual(R.y, 6)
 
     def testUpdateKWARGS(self):
+        """Testing update with KWARGS"""
         R = Rectangle(2, 2, id=0)
         self.assertEqual(R.id, 0)
         self.assertEqual(R.width, 2)
@@ -168,6 +179,7 @@ class TestRectangle(unittest.TestCase):
         self.assertEqual(R.y, 10)
 
     def testCreate(self):
+        """Testing create"""
         R = Rectangle(5, 4, 3, 2, 1)
         R_dic = R.to_dictionary()
         R2 = Rectangle.create(**R_dic)
@@ -178,6 +190,7 @@ class TestRectangle(unittest.TestCase):
         self.assertEqual(R2.y, 2)
 
     def testPep8(self):
+        """Testing pep8 on file"""
         pep8style = pep8.StyleGuide(quiet=True)
         result = pep8style.check_files(
             ['models/base.py', 'models/rectangle.py', 'models/square.py'])
