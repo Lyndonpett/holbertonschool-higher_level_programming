@@ -11,6 +11,7 @@ class Base:
     __nb_objects = 0
 
     def __init__(self, id=None):
+        """initatation of the class base"""
         if id is not None:
             self.id = id
         else:
@@ -18,12 +19,14 @@ class Base:
             self.id = Base.__nb_objects
 
     def integerValidator(self, name, value):
+        """Validator for the classes"""
         if type(value) is not int:
             raise TypeError("{} must be an integer".format(name))
         if value <= 0:
             raise ValueError("{} must be > 0".format(name))
 
     def xyValidator(self, name, value):
+        """Validator for x y"""
         if type(value) is not int:
             raise TypeError("{} must be an integer".format(name))
         if value < 0:
@@ -31,12 +34,14 @@ class Base:
 
     @staticmethod
     def to_json_string(list_dictionaries):
+        """Takes a dict to json"""
         if list_dictionaries is None or list_dictionaries == []:
             return "[]"
         return json.dumps(list_dictionaries)
 
     @classmethod
     def save_to_file(cls, list_objs):
+        """saves a dict in json to a new file"""
         if list_objs is None:
             list_objs = []
 
@@ -51,12 +56,14 @@ class Base:
 
     @staticmethod
     def from_json_string(json_string):
+        """Json to dictionary"""
         if json_string is None or 0:
             return []
         return json.loads(json_string)
 
     @classmethod
     def create(cls, **dictionary):
+        """Creates a new class"""
         if cls.__name__ is "Rectangle":
             dummy = cls(1, 1, 0, 0)
 
@@ -68,6 +75,7 @@ class Base:
 
     @classmethod
     def load_from_file(cls):
+        """Loads from a file"""
         filename = cls.__name__ + '.json'
         newList = []
 
