@@ -10,6 +10,8 @@ from models.square import Square
 class TestSquare(unittest.TestCase):
     """Testing the Square class"""
 
+    # Testing using ClassMethod to set up square.
+
     @classmethod
     def setUpClass(cls):
         cls.s1 = Square(10)
@@ -21,6 +23,8 @@ class TestSquare(unittest.TestCase):
         del cls.s1
         del cls.s2
         del cls.s3
+
+    # Testing __init__ values are correct
 
     def testInstantation(self):
         self.assertEqual(self.s1.id, 8)
@@ -41,6 +45,8 @@ class TestSquare(unittest.TestCase):
         self.assertEqual(self.s3.x, 0)
         self.assertEqual(self.s3.y, 0)
 
+    # Testing errors for __init__
+
     def testSquareInitErrors(self):
         with self.assertRaises(TypeError):
             s4 = Square()
@@ -53,6 +59,8 @@ class TestSquare(unittest.TestCase):
             s6 = Square(0, id=0)
             s6 = Square(-1, id=0)
             s6 = Square(1, 0, id=0)
+
+    # Testing square setter w/ errors
 
     def testSquareSetter(self):
         S = Square(2)
@@ -77,6 +85,8 @@ class TestSquare(unittest.TestCase):
         with self.assertRaises(ValueError):
             S.size = -1
             S.size = 0
+
+    # Testing update with ARGS
 
     def testUpdateArgs(self):
         R = Square(2, 2, id=0)
@@ -114,6 +124,8 @@ class TestSquare(unittest.TestCase):
         self.assertEqual(R.x, 3)
         self.assertEqual(R.y, 4)
 
+    # Testing update with KWARGS
+
     def testUpdateKWARGS(self):
         R = Square(2, 2, id=0)
         self.assertEqual(R.id, 0)
@@ -136,6 +148,8 @@ class TestSquare(unittest.TestCase):
         self.assertEqual(R.x, 5)
         self.assertEqual(R.y, 10)
 
+    # Testing create from class Base within square
+
     def testCreate(self):
         S = Square(5, 4, 3, 2)
         S_dic = S.to_dictionary()
@@ -145,6 +159,8 @@ class TestSquare(unittest.TestCase):
         self.assertEqual(S2.height, 5)
         self.assertEqual(S2.x, 4)
         self.assertEqual(S2.y, 3)
+
+    # Testing pep8 on the file
 
     def testPep8(self):
         pep8style = pep8.StyleGuide(quiet=True)
