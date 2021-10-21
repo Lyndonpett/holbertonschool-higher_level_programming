@@ -53,6 +53,14 @@ class TestBase(unittest.TestCase):
         self.assertEqual(Base.to_json_string(
             listDic), '[{"id": null}, {"id": 69}, {"id": -350}, {"id": 420}]')
 
+    # Testing JSON to dictionary
+
+    def testFromJsonString(self):
+        JsonString = Base.to_json_string(
+            [{'id': None}, {'id': 69}, {'id': -350}, {'id': 420}])
+        self.assertEqual(Base.from_json_string(JsonString),
+                         [{"id": None}, {"id": 69}, {"id": -350}, {"id": 420}])
+
     # Testing pep8 on the file
 
     def testPep8(self):
