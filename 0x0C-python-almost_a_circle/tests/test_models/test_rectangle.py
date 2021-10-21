@@ -10,6 +10,8 @@ from models.rectangle import Rectangle
 class TestRectangle(unittest.TestCase):
     """Testing the Rectangle Class"""
 
+    # Setting up using ClassMethod to check __init__
+
     @classmethod
     def setUpClass(cls):
         cls.r1 = Rectangle(10, 5)
@@ -23,6 +25,8 @@ class TestRectangle(unittest.TestCase):
         del cls.r2
         del cls.r3
         del cls.r4
+
+    # Testing correct values happened during __init__
 
     def testInstantation(self):
         self.assertEqual(self.r1.id, 3)
@@ -49,6 +53,8 @@ class TestRectangle(unittest.TestCase):
         self.assertEqual(self.r4.x, 0)
         self.assertEqual(self.r4.y, 0)
 
+    # Testing instantation errors
+
     def testInitErrors(self):
         with self.assertRaises(TypeError):
             r5 = Rectangle()
@@ -68,6 +74,8 @@ class TestRectangle(unittest.TestCase):
             r7 = Rectangle(1, 1, -1, id=0)
             r7 = Rectangle(1, 1, 1, -1, id=0)
 
+    # Testing the setters
+
     def testSetter(self):
         R = Rectangle(1, 1)
         R.id = 69
@@ -80,6 +88,8 @@ class TestRectangle(unittest.TestCase):
         self.assertEqual(R.x, 10)
         R.y = 15
         self.assertEqual(R.y, 15)
+
+    # Testing setter errors
 
     def TestSetterErrors(self):
         self.assertRaises(TypeError, self.R.__init__, ["5", "6"])
@@ -94,6 +104,8 @@ class TestRectangle(unittest.TestCase):
         self.assertRaises(ValueError, self.R.x, -1)
         self.assertRaises(ValueError, self.R.y, -1)
 
+    # Testing Area function
+
     def testArea(self):
         R = Rectangle(5, 10, id=0)
         self.assertEqual(R.area(), 50)
@@ -101,6 +113,8 @@ class TestRectangle(unittest.TestCase):
         self.assertEqual(R.area(), 30)
         R.height = 5
         self.assertEqual(R.area(), 15)
+
+    # Testing update using ARGS
 
     def testUpdateArgs(self):
         R = Rectangle(2, 2, id=0)
@@ -145,6 +159,8 @@ class TestRectangle(unittest.TestCase):
         self.assertEqual(R.x, 7)
         self.assertEqual(R.y, 6)
 
+    # Testing update using KWARGS
+
     def testUpdateKWARGS(self):
         R = Rectangle(2, 2, id=0)
         self.assertEqual(R.id, 0)
@@ -167,6 +183,8 @@ class TestRectangle(unittest.TestCase):
         self.assertEqual(R.x, 5)
         self.assertEqual(R.y, 10)
 
+    # Testing create function from Base
+
     def testCreate(self):
         R = Rectangle(5, 4, 3, 2, 1)
         R_dic = R.to_dictionary()
@@ -176,6 +194,8 @@ class TestRectangle(unittest.TestCase):
         self.assertEqual(R2.height, 4)
         self.assertEqual(R2.x, 3)
         self.assertEqual(R2.y, 2)
+
+    # Testing pep8 on the file
 
     def testPep8(self):
         pep8style = pep8.StyleGuide(quiet=True)
