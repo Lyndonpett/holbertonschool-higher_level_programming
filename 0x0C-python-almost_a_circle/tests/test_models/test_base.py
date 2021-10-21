@@ -11,8 +11,6 @@ from models.base import Base
 class TestBase(unittest.TestCase):
     """Testing Base Class"""
 
-    # Using class method to use in unittestin
-
     @classmethod
     def setUpClass(cls):
         cls.b1 = Base()
@@ -29,8 +27,6 @@ class TestBase(unittest.TestCase):
         del cls.b4
         del cls.b5
 
-    # Testing if __init__ provides proper values
-
     def testInstantation(self):
         self.assertEqual(self.b1.id, 1)
         self.assertEqual(self.b2.id, 50)
@@ -38,30 +34,22 @@ class TestBase(unittest.TestCase):
         self.assertEqual(self.b4.id, 12)
         self.assertEqual(self.b5.id, 2)
 
-    # Testing if ID's match
-
     def testIDmatch(self):
         b98 = Base(98)
         self.assertEqual(b98.id, 98)
         b69 = Base(69)
         self.assertEqual(b69.id, 69)
 
-    # Testing a dictionary to json string
-
     def testToJsonString(self):
         listDic = [{'id': None}, {'id': 69}, {'id': -350}, {'id': 420}]
         self.assertEqual(Base.to_json_string(
             listDic), '[{"id": null}, {"id": 69}, {"id": -350}, {"id": 420}]')
-
-    # Testing JSON to dictionary
 
     def testFromJsonString(self):
         JsonString = Base.to_json_string(
             [{'id': None}, {'id': 69}, {'id': -350}, {'id': 420}])
         self.assertEqual(Base.from_json_string(JsonString),
                          [{"id": None}, {"id": 69}, {"id": -350}, {"id": 420}])
-
-    # Testing pep8 on the file
 
     def testPep8(self):
         pep8style = pep8.StyleGuide(quiet=True)
