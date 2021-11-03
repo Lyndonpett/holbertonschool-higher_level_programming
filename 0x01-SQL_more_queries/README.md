@@ -1,0 +1,1 @@
+# This directory is to get more practice in MySQL.
