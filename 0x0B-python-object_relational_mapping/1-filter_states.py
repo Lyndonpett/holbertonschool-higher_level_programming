@@ -13,8 +13,8 @@ if __name__ == '__main__':
     # Cursor allows us to work through the database
     cur = DB.cursor()
 
-    cur.execute(
-        "SELECT * FROM states WHERE name LIKE BINARY 'N%' ORDER BY states.id ASC")
+    cur.execute("SELECT * FROM states\
+    WHERE name LIKE BINARY 'N%' ORDER BY states.id ASC")
 
     # Fetchall after selecting what to grab.
     states = cur.fetchall()
