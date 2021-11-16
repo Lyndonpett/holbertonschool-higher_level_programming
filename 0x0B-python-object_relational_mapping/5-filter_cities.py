@@ -15,8 +15,8 @@ if __name__ == '__main__':
 
     cur.execute("SELECT cities.name FROM\
     cities INNER JOIN states ON cities.state_id = states.id\
-    WHERE states.name = '{}'\
-    ORDER BY cities.id ASC".format(argv[4]))
+    WHERE states.name LIKE BINARY %(name)s\
+    ORDER BY cities.id ASC", {'name': argv[4]})
 
     # Fetchall after selecting what to grab.
     cities = cur.fetchall()
