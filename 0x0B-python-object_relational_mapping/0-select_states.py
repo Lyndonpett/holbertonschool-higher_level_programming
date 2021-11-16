@@ -8,7 +8,7 @@ if __name__ == "__main__":
 
     # Connects to the database
     DB = MySQLdb.connect(
-        host="localhost", user=argv[1], db=argv[3])
+        host="localhost", user=argv[1], passwd=argv[2], db=argv[3])
 
     # Cursor allows us to work through the database
     cur = DB.cursor()
